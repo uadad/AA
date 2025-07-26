@@ -1,0 +1,43 @@
+Ejercicio 1:
+     queremos aprender p(A).
+     NR=4, PR=4.
+    p(A):-.
+
+   p(A):-r(A).  p(A):-q(X,A).  p(A):-q(A,A). p(A):-q(A,X).  
+
+
+Ejercicio 2:      formula = t.(log(Pr'/(Pr'+Nr')) - log(Pr/(Pr+Nr))).
+
+  Queremos aprender r(X,Y):-.
+  como la regla anterior cubre todos los ejemplos negativos, tratamos de añadir mas condiciones a esa regla que cubren todos los positivos y ningún negativo.
+  
+  Pr=6.  Nr=5.   
+
+a)    r(X,Y):-p(X,Y).  r(X,Y):-p(X,Z).  r(X,Y):-p(Z,X).  r(X,Y):-p(X,X).
+      r(X,Y):-p(Y,X).  r(X,Y):-p(Z,Y).  r(X,Y):-p(Y,Z).  r(X,Y):-p(Y,Y).
+
+b)                       t     Pr'   Nr'   G
+    r(X,Y):-p(e,Y).      2      2     0    = 2*(log(2/2)-log(6/11))=2*log(11/6)
+    
+    no hay que añadir mas condiciones a esa regla porque no cubre a ningún ejemplo negativo, ahora cogemos esa regla y eliminamos todos los ejemplos positivos que la cubren y volvemos a hacer el algoritmo.
+
+hay que seguir porque la regla anterior solo cubre 2 ejemplos positivos del los 6 que tenemos.
+
+c)                        t     Pr'   Nr'   G
+     r(X,Y):-p(Z,Y).      6      6     3   = 6*(log(6/9)-log(6/11))
+
+    la regla anterior cubre 3 ejemplos neagtvios, por lo que habrá que añadirle mas condiciones a ese literal hasta no cubrir ningún ejemplo negativo.
+
+                                  t     Pr'   Nr'   G
+     r(X,Y):-p(Z,Y), p(Z,X).      3      3     2   = 3*(log(3/5)-log(6/9))
+
+  al mejor se refiere a esto:
+                          t     Pr'   Nr'   G
+     r(X,Y):-p(Z,X).      4      4     3   = 6*(log(6/9)-log(6/11))
+
+los dos completan la regla anterior ya que cubren menos ejemplos negativos.
+
+porque sigue cubriendo ejemplos negativos.
+
+
+
